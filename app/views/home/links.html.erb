@@ -1,0 +1,16 @@
+<h3>그냥 a 태그</h3>
+<a href="/">index로가기</a>
+<br>
+
+<h3>평범한 link_to 태그</h3>
+<%= link_to '옮기기', {controller: :home, action: :index} %>
+<br>
+
+<h3>1번글</h3>
+<%= link_to '1번글', once_path(1), {method: :get, data: {confirm: '이동하시겠습니까?'}} %>
+<br>
+
+<h3>이미지같은 블록으로 설정해보자</h3>
+<%= link_to once_path(@post) do
+    image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKpAcbDdnnU2XWp-sq67vgUvfSeg-xNgtiXdRMw6s0485sxxgk"
+end %>

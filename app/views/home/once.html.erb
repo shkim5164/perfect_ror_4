@@ -1,0 +1,15 @@
+<p>1번글 페이지</p>
+
+<%= @post.title %> <br>
+
+<%= @post.content %> <br>
+
+<%= @post.radio %> <br>
+
+<%= @post.checkbox %>
+<br>
+
+<%= link_to '뒤로가기', :back %>
+<br>
+
+<%= link_to '다음 장으로', {controller: :home, action: :blank} %>

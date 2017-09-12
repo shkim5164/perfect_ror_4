@@ -1,0 +1,77 @@
+<div class = 'container'>
+    <div class = 'row'>
+        <div class = 'col' style = 'background-color: red;'>
+            <h1 style = 'color: white;'>HTML FORM</h1>
+            <form action = '/home/create' method = 'post' class = 'form'>
+                <p>제목</p>
+                <input type = 'text' name = 'title' value = '' placeholder ='제목' class = 'title'>
+                <p>내용</p>
+                <textarea name = 'content' value = '' placeholder ='내용' class = 'content'></textarea>
+                <p>라디오버튼</p>
+                <input type="radio" name="gender" value="male" checked> Male<br>
+                <input type="radio" name="gender" value="female"> Female<br>
+                <input type="radio" name="gender" value="other"> Other
+                <p>체크박스</p>
+                <input type="checkbox" name="vehicle" value="1" checked> 1<br>
+                <input type="checkbox" name="vehicle" value="2"> 2<br>
+                <input type = 'submit' value = '제출'>
+            </form>
+        </div>
+        <div class = 'col' style = 'background-color: blue;'>
+            <h1 style = 'color: white;'>FORM_TAG</h1>
+            <%= form_tag({controller: :home, action: :create}, method: 'post', class: 'form') do%>
+                <p>제목</p>
+                <%= text_field_tag(:title, "", placeholder: '제목', class: 'title') %>
+                <p>내용</p>
+                <%= text_area_tag :content, "", placeholder: '내용', class: 'content' %>
+                <p>라디오버튼</p>
+                <lable><%= radio_button_tag :gender, "male", true %>Male</lable><br>
+                <lable><%= radio_button_tag :gender, "female", false %>Female</lable><br>
+                <lable><%= radio_button_tag :gender, "other", false %>Other</lable><br>
+                <p>체크박스</p>
+                <lable><%= check_box_tag :vehicle, "1", true %>1</lable><br>
+                <lable><%= check_box_tag :vehicle, "2", false %>2</lable>
+                <br>
+                <%= submit_tag("제출") %>
+            <% end %>
+        </div>
+        <div class = 'col' style = 'background-color: yellow;'>
+            <h1 style = 'color: white;'>FORM HELPER</h1>
+            <%= form_tag({action: :create}, method: 'post', class: 'form') do%>
+                <p>제목</p>
+                <%= text_field :post, :title, placeholder: '제목', class: 'title' %>
+                <p>내용</p>
+                <%= text_area :post, :content, placeholder: '내용', class: 'content' %>
+                <p>라디오버튼</p>
+                <lable><%= radio_button :post, :radio, 'male' %>Male</lable><br>
+                <lable><%= radio_button :post, :radio, 'female' %>Female</lable><br>
+                <lable><%= radio_button :post, :radio, 'other' %>Other</lable><br>
+                <p>체크박스</p>
+                <lable><%= check_box :post, :checkbox, {},'no', '1' %>1</lable><br>
+                <lable><%= check_box :post, :checkbox, {}, 'no', '2' %>2</lable><br>
+                <%= submit_tag("제출") %>
+            <% end %>
+        </div>
+        <div class = 'col' style = 'background-color: green;'>
+            <h1 style = 'color: white;'>f.FORM HELPER</h1>
+            <%= form_for(@post, url: {controller: 'home', action: 'create'}, html: {method: 'post', class: 'form'}) do |f| %>
+                <p>제목</p>
+                <%= f.text_field :title, placeholder: '제목', class: 'title' %>
+                <p>내용</p>
+                <%= f.text_area :content, placeholder: '내용', class: 'content' %>
+                <p>라디오버튼</p>
+                <lable><%= f.radio_button :radio, 'male' %>Male</lable><br>
+                <lable><%= f.radio_button :radio, 'female' %>Female</lable><br>
+                <lable><%= f.radio_button :radio, 'other' %>Other</lable><br>
+                <p>체크박스</p>
+                <lable><%= f.check_box :checkbox, {},'no', '1' %>1</lable><br>
+                <lable><%= f.check_box :checkbox, {}, 'no', '2' %>2</lable><br>
+                <%= submit_tag("제출") %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div style='margin-right: auto; margin-top: 10px;'>
+    <%= link_to '다음 장으로', {controller: :home, action: :links}, style: 'padding-left: 70%;' %>
+</div>

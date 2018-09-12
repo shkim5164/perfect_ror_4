@@ -7,7 +7,7 @@
 <pre>$ git init</pre>
 
 **2. git clone**
-<pre>$ git clone </pre>
+<pre>$ git clone https://github.com/shkim5164/perfect_ror_4.git </pre>
 
 **3. 마이그레이션 적용**
 <pre>$ rake db:migrate</pre>
